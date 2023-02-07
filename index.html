@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>RMR-t love letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:ital,wght@1,200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading">  
+        <img src="./assets/heart.gif" alt="Loading..." />  
+    </div> 
+
+    
+    
+    <div id="container">
+        <div class="logo">
+            <div class="container__logo">
+                <img src="./assets/logo.jpeg" alt="Logo" /> 
+                <div>
+                    <div><span class="logo_title">red_mad</span><span>_robot</span></div>
+                    <br/>
+                    <div><span class="love-letter">LOVE LETTER</span></div>
+                </div>
+            </div>
+        </div>
+
+        <form id="form-letter" onsubmit="event.preventDefault(); sendForm();">
+            <div class="logo_form">
+                <img src="./assets/robots.jpeg" alt="Logo" /> 
+            </div>
+            <div class="title">
+                <span class="title__text">День Святого Валентина!</span>
+            </div>
+            <div class="subtitle">
+                <span class="subtitle__text">Отправьте коллеге свои пожелания <br/> к 14 Февраля</span>
+            </div>
+
+            <input id="email" class="email" type="email" name="useremail" placeholder="rmr-love@example.com" required /> <br />
+            <input id="mes" type="text" name="message" placeholder="Пожелания для коллеги" required /> <br />
+            <input id="link" type="text" name="imagelink" placeholder="Ссылка на картинку" required /> <br />
+            <input class="submit" type="submit" value="Отправить открытку!" onsubmit="submitForm()" />
+            
+        </form>
+    </div>
+
+    <div class="toast" id="toast_ok">
+        <div class="toast-container">
+            <p class="message_ok">Робот, твоя открытка доставлена в почтовое отделение :*</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast_not_ok">
+        <div class="toast-container">
+            <p class="message_not_ok">404, что-то пошло не так :(</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">  
+    window.onload = function() {  
+        setTimeout(() => document.getElementById('loading').style.display='none', 2000)  
+    }  
+
+    function sendForm() {
+        let btnSubmit = document.getElementsByClassName('submit')
+        
+        let email = document.getElementById('email').value  
+        let mes = document.getElementById('mes').value  
+        let link = document.getElementById('link').value  
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', "https://12");
+        xhr.send(JSON.stringify({
+            useremail: email,
+            message: mes, 
+            imagelink: link
+        }));
+
+        btnSubmit[0].value = 'Отправка...'
+
+        xhr.onload = function() {
+            btnSubmit[0].value = 'Отправить открытку!'
+
+            let toast = null
+
+            if (xhr?.status != 200) {
+                toast = document.getElementById('toast_not_ok');
+                toast.classList.remove('toast-close-animation')
+                toast.classList.add('toast-open-animation');
+            } else {
+                toast = document.getElementById('toast_ok');
+                toast.classList.remove('toast-close-animation')
+                toast.classList.add('toast-open-animation');
+            }
+
+            setTimeout(() => {
+                toast.classList.remove('toast-open-animation');
+                toast.classList.add('toast-close-animation')
+            }, 2500)
+        }
+    }
+
+    
+</script>  
+</html>
