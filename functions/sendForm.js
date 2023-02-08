@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const handler = (payloads) => {
+const handler = async (payloads) => {
     const url = process.env.API_URL
 
     try {
