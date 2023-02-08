@@ -1,40 +1,21 @@
-function handler() {
-    let btnSubmit = document.getElementsByClassName('submit')
-        
-    let email = document.getElementById('email').value  
-    let mes = document.getElementById('mes').value  
-    let link = document.getElementById('link').value  
+const axios = require('axios')
 
-    var xhr = new XMLHttpRequest();
+const handler = (payloads) => {
+    const url = process.env.API_URL
 
-    xhr.open('POST', process.env.API_URL);
-    xhr.send(JSON.stringify({
-        useremail: email,
-        message: mes, 
-        imagelink: link
-    }));
+    try {
+        const { data } = await axios.post(url, payloads)
 
-    btnSubmit[0].value = 'Отправка...'
-
-    xhr.onload = function() {
-        btnSubmit[0].value = 'Отправить открытку!'
-
-        let toast = null
-
-        if (xhr?.status != 200) {
-            toast = document.getElementById('toast_not_ok');
-            toast.classList.remove('toast-close-animation')
-            toast.classList.add('toast-open-animation');
-        } else {
-            toast = document.getElementById('toast_ok');
-            toast.classList.remove('toast-close-animation')
-            toast.classList.add('toast-open-animation');
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data)
         }
-
-        setTimeout(() => {
-            toast.classList.remove('toast-open-animation');
-            toast.classList.add('toast-close-animation')
-        }, 2500)
+    } catch (error) {
+        const { status, statusText, headers, data } = error.response
+        return {
+            statusCode: status,
+            body: JSON.stringify({status, statusText, headers, data})
+        }
     }
 }
 
