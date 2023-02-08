@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <title>RMR-t love letter</title>
+    <script src="send.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:ital,wght@1,200&display=swap" rel="stylesheet">
@@ -62,48 +63,6 @@
 <script type="text/javascript">  
     window.onload = function() {  
         setTimeout(() => document.getElementById('loading').style.display='none', 2000)  
-    }  
-
-    function sendForm() {
-        let btnSubmit = document.getElementsByClassName('submit')
-        
-        let email = document.getElementById('email').value  
-        let mes = document.getElementById('mes').value  
-        let link = document.getElementById('link').value  
-
-        var xhr = new XMLHttpRequest();
-
-        xhr.open('POST', "https://12");
-        xhr.send(JSON.stringify({
-            useremail: email,
-            message: mes, 
-            imagelink: link
-        }));
-
-        btnSubmit[0].value = 'Отправка...'
-
-        xhr.onload = function() {
-            btnSubmit[0].value = 'Отправить открытку!'
-
-            let toast = null
-
-            if (xhr?.status != 200) {
-                toast = document.getElementById('toast_not_ok');
-                toast.classList.remove('toast-close-animation')
-                toast.classList.add('toast-open-animation');
-            } else {
-                toast = document.getElementById('toast_ok');
-                toast.classList.remove('toast-close-animation')
-                toast.classList.add('toast-open-animation');
-            }
-
-            setTimeout(() => {
-                toast.classList.remove('toast-open-animation');
-                toast.classList.add('toast-close-animation')
-            }, 2500)
-        }
-    }
-
-    
+    } 
 </script>  
 </html>

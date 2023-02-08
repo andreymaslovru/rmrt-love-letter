@@ -1,0 +1,8 @@
+{
+    "devDependencies": {
+        "netlify-cli": "^12.10.0"
+    },
+    "scripts": {
+        "debug": "netlify dev --inspect"
+    }
+}
