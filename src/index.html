@@ -83,11 +83,11 @@
                 imagelink: link
             })
         }).then(res => {
-            toast = document.getElementById('toast_not_ok');
+            toast = document.getElementById('toast_ok');
             toast.classList.remove('toast-close-animation')
             toast.classList.add('toast-open-animation');
         }).catch(() => {
-            toast = document.getElementById('toast_ok');
+            toast = document.getElementById('toast_not_ok');
             toast.classList.remove('toast-close-animation')
             toast.classList.add('toast-open-animation');
         }).finally(() => {
