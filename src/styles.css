@@ -208,16 +208,13 @@ input:focus {
     .toast {
         font-size: 8px;
         padding: 10px;
-        width: 100%;
-        right: 0;
-        text-align: center;
     }
 
     .toast-container {
-        width: 100%;
+        width: 200px;
         max-width: 100%;
         text-align: center;
-        padding: 0px 32px
+        padding: 0px 32px;
     }
 
     @keyframes openToast {
