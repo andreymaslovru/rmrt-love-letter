@@ -1,4 +1,4 @@
-function sendForm() {
+function handler() {
     let btnSubmit = document.getElementsByClassName('submit')
         
     let email = document.getElementById('email').value  
@@ -38,4 +38,4 @@ function sendForm() {
     }
 }
 
-module.exports = { sendForm }
+module.exports = { handler }
