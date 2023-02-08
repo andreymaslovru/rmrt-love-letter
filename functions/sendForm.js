@@ -1,10 +1,11 @@
 const axios = require('axios')
 
-const handler = async (payloads) => {
+const handler = async (event) => {
+    console.log(event, 'event')
     const url = process.env.API_URL
 
     try {
-        const { data } = await axios.post(url, payloads)
+        const { data } = await axios.post(url, event)
 
         return {
             statusCode: 200,
