@@ -8,7 +8,7 @@ body {
 
 #form-letter {
     background-color: white;
-    width: 520px;
+    width: 35%;
     text-align: center;
     padding: 0 48px 48px 48px;
     box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.06);
@@ -129,7 +129,7 @@ input:focus {
 .toast {
     position: fixed;
     left: 50%;
-    bottom: -20%;
+    bottom: -200%;
     transform: translateX(-50%);
     opacity: 1;
     z-index: 35;
@@ -172,4 +172,71 @@ input:focus {
 
 .logo_form img {
     width: 25%;
+}
+
+@media screen and (max-width: 720px) {
+    #form-letter {
+        width: 75%;
+        padding: 0 24px 24px 24px;
+    }
+
+    .title__text {
+        font-size: 16px;
+    }
+
+    .subtitle__text {
+        font-size: 12px;
+    }
+
+    .logo img {
+        width: 48px
+    }
+
+    input {
+        font-size: 10px;
+    }
+
+    input::placeholder {
+        font-size: 10px;
+    }
+
+    .logo_form img {
+        width: 50%;
+    }
+
+    .toast {
+        font-size: 8px;
+        padding: 10px;
+        width: 100%
+    }
+
+    .toast-container {
+        width: 100%;
+        text-align: center;
+        padding: 0
+    }
+
+    @keyframes openToast {
+        from {
+            bottom: -200%;
+        }
+
+        to {
+            bottom: 0%;
+        }
+    }
+
+    @keyframes closeToast {
+        from {
+            bottom: 0%;
+        }
+
+        to {
+            bottom: -200%;
+        }
+    }
+
+    .submit {
+        margin-top: 12px;
+    }
 }
