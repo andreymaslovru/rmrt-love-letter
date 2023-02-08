@@ -175,7 +175,7 @@ input:focus {
     width: 25%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
     #form-letter {
         width: 75%;
         padding: 0 24px 24px 24px;
